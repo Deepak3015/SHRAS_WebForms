@@ -1,21 +1,52 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BookAppointment.aspx.cs" Inherits="SHRAS_WebForms.Patient.BookAppointment" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Book an Appointment</h2>
+﻿<%@ Page Title="Book Appointment" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BookAppointment.aspx.cs" Inherits="SHRAS_WebForms.Patient.BookAppointment" %>
 
-    <asp:Label ID="lblDoctor" runat="server" Text="Select Doctor: " />
-    <asp:DropDownList ID="ddlDoctors" runat="server" AutoPostBack="false"></asp:DropDownList>
-    <br /><br />
+<asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        .form-container {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
 
-    <asp:Label ID="lblDate" runat="server" Text="Select Date: " />
-    <asp:TextBox ID="txtDate" runat="server" TextMode="Date" />
-    <br /><br />
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
 
-    <asp:Label ID="lblTime" runat="server" Text="Select Time: " />
-    <asp:TextBox ID="txtTime" runat="server" TextMode="Time" />
-    <br /><br />
+        .form-group {
+            margin-bottom: 20px;
+        }
 
-    <asp:Button ID="btnBook" runat="server" Text="Book Appointment" OnClick="btnBook_Click" />
-    <br /><br />
+        .btn {
+            width: 100%;
+        }
+    </style>
 
-    <asp:Label ID="lblMessage" runat="server" ForeColor="Green" />
+    <div class="form-container">
+        <h2>Book an Appointment</h2>
+
+        <div class="form-group">
+            <label for="ddlDoctors">Select Doctor</label>
+            <asp:DropDownList ID="ddlDoctors" runat="server" CssClass="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="txtAppointmentDate">Appointment Date</label>
+            <asp:TextBox ID="txtAppointmentDate" runat="server" CssClass="form-control" TextMode="Date" />
+        </div>
+
+        <div class="form-group">
+            <label for="txtAppointmentTime">Appointment Time</label>
+            <asp:TextBox ID="txtAppointmentTime" runat="server" CssClass="form-control" TextMode="Time" />
+        </div>
+
+        <div class="form-group">
+            <asp:Button ID="btnBook" runat="server" Text="Book Appointment" CssClass="btn btn-primary" OnClick="btnBook_Click" />
+        </div>
+
+        <asp:Label ID="lblMessage" runat="server" CssClass="text-success" />
+    </div>
 </asp:Content>

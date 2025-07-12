@@ -1,11 +1,25 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PatientDashboard.aspx.cs" Inherits="SHRAS_WebForms.Patient.Patient" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
- <h2>Welcome, Patient</h2>
-<p>Your dashboard:</p>
-<ul>
-    <li><a href="#">Book Appointment</a></li>
-    <li><a href="#">View Prescriptions</a></li>
-    <li><a href="#">Medical History</a></li>
-</ul>
+    <div class="container mt-5">
+        <h2>Welcome, <asp:Label ID="lblPatientName" runat="server" /></h2>
+        
+        <hr />
+        
+        <p>
+            <asp:HyperLink ID="lnkBookAppointment" runat="server" NavigateUrl="BookAppointment.aspx" CssClass="btn btn-primary">
+                Book a New Appointment
+            </asp:HyperLink>
+        </p>
 
+        <h4>Your Appointments</h4>
+        <asp:GridView ID="gvAppointments" runat="server" CssClass="table table-bordered" AutoGenerateColumns="false">
+            <Columns>
+                <asp:BoundField HeaderText="Doctor" DataField="DoctorName" />
+                <asp:BoundField HeaderText="Specialization" DataField="Specialization" />
+                <asp:BoundField HeaderText="Date" DataField="AppointmentDate" />
+                <asp:BoundField HeaderText="Time" DataField="AppointmentTime" />
+                <asp:BoundField HeaderText="Status" DataField="Status" />
+            </Columns>
+        </asp:GridView>
+    </div>
 </asp:Content>

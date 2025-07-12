@@ -20,7 +20,8 @@ namespace SHRAS_WebForms
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(cs)) {
+            using (SqlConnection con = new SqlConnection(cs))
+            {
                 string query = "Select * From Users Where Username = @User AND Password = @Pass";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@User", txtUsername.Text);
@@ -51,13 +52,18 @@ namespace SHRAS_WebForms
                     }
                     else
                     {
-                        lblMessage.Text = " Invalid username or password.";
+                        lblMessage.Text = "Invalid role.";
                     }
+
                     reader.Close();
                     con.Close();
                 }
+                else
+                {
+                    lblMessage.Text = "Invalid username or password.";
+                }
 
-
+            
             }
 
         }

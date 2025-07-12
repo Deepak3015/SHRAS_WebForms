@@ -129,7 +129,9 @@
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
     <Content Include="Patient\BookAppointment.aspx" />
+    <Content Include="Patient\LoginPatient.aspx" />
     <Content Include="Patient\PatientDashboard.aspx" />
+    <Content Include="Patient\RegisterPatient.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -246,12 +248,26 @@
     <Compile Include="Patient\BookAppointment.aspx.designer.cs">
       <DependentUpon>BookAppointment.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Patient\LoginPatient.aspx.cs">
+      <DependentUpon>LoginPatient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Patient\LoginPatient.aspx.designer.cs">
+      <DependentUpon>LoginPatient.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Patient\PatientDashboard.aspx.cs">
       <DependentUpon>PatientDashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Patient\PatientDashboard.aspx.designer.cs">
       <DependentUpon>PatientDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Patient\RegisterPatient.aspx.cs">
+      <DependentUpon>RegisterPatient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Patient\RegisterPatient.aspx.designer.cs">
+      <DependentUpon>RegisterPatient.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

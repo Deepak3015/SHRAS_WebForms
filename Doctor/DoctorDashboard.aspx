@@ -1,11 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DoctorDashboard.aspx.cs" Inherits="SHRAS_WebForms.Doctor.Doctor" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
- <h2>Welcome, Doctor</h2>
-<p>Use the dashboard to:</p>
-<ul>
-    <li><a href="#">View Appointments</a></li>
-    <li><a href="#">Add Diagnosis</a></li>
-    <li><a href="#">View Patient History</a></li>
-</ul>
+﻿<%@ Page Title="Doctor Dashboard" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DoctorDashboard.aspx.cs" Inherits="SHRAS_WebForms.Doctor.DoctorDashboard" %>
 
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Label ID="lblWelcome" runat="server" Text="Welcome, Doctor" Font-Size="X-Large" />
+<hr />
+<asp:GridView ID="gvAppointments" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered">
+    <Columns>
+        <asp:BoundField DataField="AppointmentID" HeaderText="ID" />
+        <asp:BoundField DataField="PatientName" HeaderText="Patient" />
+        <asp:BoundField DataField="AppointmentDate" HeaderText="Date" DataFormatString="{0:dd-MM-yyyy}" />
+        <asp:BoundField DataField="AppointmentTime" HeaderText="Time" />
+        <asp:BoundField DataField="Status" HeaderText="Status" />
+    </Columns>
+</asp:GridView>
 </asp:Content>
