@@ -1,11 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminDashboard.aspx.cs" Inherits="SHRAS_WebForms.Admin.Admin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Welcome, Admin</h2>
-<p>Use the links below to manage the system:</p>
-<ul>
-    <li><a href="#">Manage Doctors</a></li>
-    <li><a href="#">Manage Patients</a></li>
-    <li><a href="#">View Appointments</a></li>
-</ul>
+  <h2>Welcome, Admin!</h2>
+
+    <asp:Button ID="btnViewDoctors" runat="server" Text="Manage Doctors" OnClick="btnViewDoctors_Click" />
+    <asp:Button ID="btnViewPatients" runat="server" Text="Manage Patients" OnClick="btnViewPatients_Click" />
+    <asp:Button ID="btnViewAppointments" runat="server" Text="View Appointments" OnClick="btnViewAppointments_Click" />
+    <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
 
 </asp:Content>

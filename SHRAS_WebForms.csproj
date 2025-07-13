@@ -101,6 +101,9 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Admin\AdminDashboard.aspx" />
+    <Content Include="Admin\ManageAppointments.aspx" />
+    <Content Include="Admin\ManageDoctors.aspx" />
+    <Content Include="Admin\ManagePatients.aspx" />
     <Content Include="App_Data\Database1.mdf" />
     <Content Include="App_Data\Database1_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
@@ -122,11 +125,14 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\home.css" />
+    <Content Include="Content\login.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Doctor\DoctorDashboard.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="index.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Patient\BookAppointment.aspx" />
     <Content Include="Patient\LoginPatient.aspx" />
@@ -201,6 +207,27 @@
     <Compile Include="Admin\AdminDashboard.aspx.designer.cs">
       <DependentUpon>AdminDashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\ManageAppointments.aspx.cs">
+      <DependentUpon>ManageAppointments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageAppointments.aspx.designer.cs">
+      <DependentUpon>ManageAppointments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageDoctors.aspx.cs">
+      <DependentUpon>ManageDoctors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageDoctors.aspx.designer.cs">
+      <DependentUpon>ManageDoctors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManagePatients.aspx.cs">
+      <DependentUpon>ManagePatients.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManagePatients.aspx.designer.cs">
+      <DependentUpon>ManagePatients.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -233,6 +260,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

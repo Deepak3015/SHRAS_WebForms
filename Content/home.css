@@ -1,0 +1,110 @@
+﻿/* Luxury Color Scheme */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #3A0CA3, #7209B7);
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+    .hero-section h1 {
+        font-size: 40px;
+        margin-bottom: 15px;
+    }
+
+    .hero-section p {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+/* Buttons */
+.home-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.home-btn {
+    background: #F72585;
+    border: none;
+    padding: 15px 30px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+    .home-btn:hover {
+        background: #B5179E;
+        transform: scale(1.05);
+    }
+
+/* Info Section */
+.info-section {
+    background: #fff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+    .info-section h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: #3A0CA3;
+    }
+
+    .info-section p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .info-section ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .info-section li {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+/* Facts Section */
+.facts-section {
+    background: #F1F1F1;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+    .facts-section h2 {
+        font-size: 28px;
+        margin-bottom: 15px;
+        color: #4361EE;
+    }
+
+    .facts-section p {
+        font-size: 17px;
+        margin: 10px 0;
+    }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 30px;
+    }
+
+    .home-btn {
+        width: 80%;
+        padding: 12px 0;
+    }
+}

@@ -67,5 +67,10 @@ namespace SHRAS_WebForms
             }
 
         }
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Patient/RegisterPatient.aspx");
+        }
+
     }
 }
