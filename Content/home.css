@@ -1,110 +1,164 @@
-﻿/* Luxury Color Scheme */
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #f4f4f4;
+﻿body {
     margin: 0;
     padding: 0;
-    color: #333;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    background: #f7f7f9;
+    color: #1d1d1f;
+    overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, #3A0CA3, #7209B7);
-    color: #fff;
-    padding: 80px 20px;
+    position: relative;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-    .hero-section h1 {
-        font-size: 40px;
-        margin-bottom: 15px;
-    }
-
-    .hero-section p {
-        font-size: 18px;
-        margin-bottom: 30px;
-    }
-
-/* Buttons */
-.home-buttons {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #e0f7fa 0%, #fce4ec 100%);
+    min-height: 600px;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
+    align-items: center;
 }
 
-.home-btn {
-    background: #F72585;
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-section h1 {
+    font-size: 60px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -0.03em;
+}
+
+.hero-section p {
+    font-size: 24px;
+    color: #3c3c43;
+    margin-bottom: 40px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.hero-btn {
+    padding: 16px 36px;
     border: none;
-    padding: 15px 30px;
-    color: #fff;
-    font-size: 16px;
-    border-radius: 8px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-    .home-btn:hover {
-        background: #B5179E;
-        transform: scale(1.05);
+    .hero-btn.doctor {
+        background: #007aff;
+        color: #ffffff;
     }
 
-/* Info Section */
-.info-section {
-    background: #fff;
-    padding: 60px 20px;
+        .hero-btn.doctor:hover {
+            background: #005bb5;
+            transform: translateY(-2px);
+        }
+
+    .hero-btn.patient {
+        background: #34c759;
+        color: #ffffff;
+    }
+
+        .hero-btn.patient:hover {
+            background: #2da44e;
+            transform: translateY(-2px);
+        }
+
+.features-section {
+    padding: 80px 20px;
     text-align: center;
+    background: #ffffff;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
 }
 
-    .info-section h2 {
-        font-size: 32px;
-        margin-bottom: 20px;
-        color: #3A0CA3;
+    .features-section h2 {
+        font-size: 40px;
+        font-weight: 600;
+        margin-bottom: 50px;
     }
 
-    .info-section p {
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
-
-    .info-section ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    .info-section li {
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
-
-/* Facts Section */
-.facts-section {
-    background: #F1F1F1;
-    padding: 50px 20px;
-    text-align: center;
+.features-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-    .facts-section h2 {
-        font-size: 28px;
+.feature-card {
+    padding: 30px;
+    background: #f9f9fb;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .feature-card h3 {
+        font-size: 22px;
+        font-weight: 600;
         margin-bottom: 15px;
-        color: #4361EE;
     }
 
-    .facts-section p {
-        font-size: 17px;
-        margin: 10px 0;
+    .feature-card p {
+        font-size: 16px;
+        color: #4a4a4f;
     }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .hero-section h1 {
-        font-size: 30px;
+.insights-section {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #f7f7f9 0%, #e0e5ec 100%);
+}
+
+    .insights-section h2 {
+        font-size: 40px;
+        font-weight: 600;
+        margin-bottom: 50px;
     }
 
-    .home-btn {
-        width: 80%;
-        padding: 12px 0;
+.insights-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.insight-card {
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+    .insight-card:hover {
+        transform: translateY(-5px);
     }
+
+    .insight-card p {
+        font-size: 18px;
+        color: #4a4a4f;
+        margin: 0;
+    }
+
+.footer {
+    padding: 20px;
+    text-align: center;
+    background: #1d1d1f;
+    color: #ffffff;
+    font-size: 14px;
 }

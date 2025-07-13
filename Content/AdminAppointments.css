@@ -1,0 +1,66 @@
+﻿body {
+    background: #f4f9fb !important;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.appointments-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+    .appointments-container h2 {
+        color: #2d98da;
+        margin-bottom: 5px;
+        font-size: 2rem;
+    }
+
+.subtext {
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+/* GridView Styling */
+.appointment-grid {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 0.95rem;
+}
+
+    .appointment-grid th {
+        background: #2d98da;
+        color: #fff;
+        padding: 12px;
+        text-align: center;
+    }
+
+    .appointment-grid td {
+        background: #ffffff;
+        padding: 10px;
+        text-align: center;
+        color: #333;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .appointment-grid tr:hover td {
+        background: #eaf6ff;
+        transition: all 0.3s ease;
+    }
+
+    .appointment-grid .aspNetDisabled {
+        opacity: 0.5;
+    }
+
+    .appointment-grid a {
+        background: #ff6b6b;
+        color: #fff !important;
+        padding: 6px 12px;
+        border-radius: 20px;
+        text-decoration: none;
+        transition: background 0.3s ease;
+    }
+
+        .appointment-grid a:hover {
+            background: #ee5253;
+        }

@@ -1,0 +1,86 @@
+﻿body {
+    background: #f4f9fb !important;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.dashboard-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+    .dashboard-container h2 {
+        color: #2d98da;
+        margin-bottom: 5px;
+        font-size: 2rem;
+    }
+
+.subtext {
+    color: #7f8c8d;
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+.card-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.card {
+    background: #ffffff;
+    padding: 25px 20px;
+    width: 280px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+    .card:hover {
+        box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+        transform: translateY(-3px);
+    }
+
+    .card h4 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+    }
+
+    .card p {
+        color: #7f8c8d;
+        margin-bottom: 15px;
+        font-size: 0.95rem;
+    }
+
+.btn-primary {
+    background: #2d98da;
+    color: #fff;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    transition: background 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background: #227093;
+    }
+
+.logout-section {
+    margin-top: 40px;
+}
+
+.btn-logout {
+    background: #ff6b6b;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 25px;
+    border: none;
+    font-size: 0.95rem;
+    transition: background 0.3s ease;
+}
+
+    .btn-logout:hover {
+        background: #ee5253;
+    }

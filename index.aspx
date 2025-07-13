@@ -5,32 +5,55 @@
     <link href="Content/home.css" rel="stylesheet" />
 
     <div class="hero-section">
-        <h1>Smart Health Record & Appointment System</h1>
-        <p>Manage Appointments, Health Records, and Access Healthcare Seamlessly.</p>
-
-        <div class="home-buttons">
-            <asp:Button ID="btnDoctor" runat="server" Text="Doctor Login" CssClass="home-btn" OnClick="btnDoctor_Click" />
-            <asp:Button ID="btnPatient" runat="server" Text="Patient Login" CssClass="home-btn" OnClick="btnPatient_Click" />
+        <div class="hero-content">
+            <h1>Smart Health Record & Appointment System</h1>
+            <p>Streamline Your Healthcare Experience Effortlessly</p>
+            <div class="hero-buttons">
+                <asp:Button ID="btnDoctor" runat="server" Text="Doctor Login" CssClass="hero-btn doctor" OnClick="btnDoctor_Click" />
+                <asp:Button ID="btnPatient" runat="server" Text="Patient Login" CssClass="hero-btn patient" OnClick="btnPatient_Click" />
+            </div>
         </div>
     </div>
 
-    <div class="info-section">
+    <div class="features-section">
         <h2>Why SHRAS?</h2>
-        <p>Our system helps bridge the gap between patients, doctors, and administrators.</p>
-
-        <ul>
-            <li><strong>Secure Health Records:</strong> Manage medical history securely.</li>
-            <li><strong>Online Appointments:</strong> Book, manage, and track appointments easily.</li>
-            <li><strong>Doctor-Patient Communication:</strong> Stay connected and informed.</li>
-            <li><strong>Admin Control:</strong> Manage doctors, patients, and system settings from a single panel.</li>
-        </ul>
+        <div class="features-container">
+            <div class="feature-card">
+                <h3>Secure Health Records</h3>
+                <p>Protect and manage your medical history with advanced security.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Online Appointments</h3>
+                <p>Book, track, and manage appointments with ease.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Doctor Communication</h3>
+                <p>Stay connected with your healthcare providers.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Admin Management</h3>
+                <p>Centralized control for users and settings.</p>
+            </div>
+        </div>
     </div>
 
-    <div class="facts-section">
-        <h2>Health Facts & Insights</h2>
-        <p>🩺 <strong>Did you know?</strong> Digital health records reduce medical errors by up to 50%.</p>
-        <p>🌐 Telemedicine is expected to be a $460 billion industry by 2030.</p>
-        <p>💊 Early diagnosis through digital systems increases treatment success by 30%.</p>
+    <div class="insights-section">
+        <h2>Health Insights</h2>
+        <div class="insights-container">
+            <div class="insight-card">
+                <p>🩺 Digital records cut errors by 50%.</p>
+            </div>
+            <div class="insight-card">
+                <p>🌐 Telemedicine to reach $460B by 2030.</p>
+            </div>
+            <div class="insight-card">
+                <p>💊 Early diagnosis boosts success by 30%.</p>
+            </div>
+        </div>
     </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 - SHRAS | All Rights Reserved</p>
+    </footer>
 
 </asp:Content>
