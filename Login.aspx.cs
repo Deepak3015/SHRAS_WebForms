@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace SHRAS_WebForms
 {
@@ -15,14 +10,14 @@ namespace SHRAS_WebForms
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // No code needed for Page_Load in this case.
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             using (SqlConnection con = new SqlConnection(cs))
             {
-                string query = "Select * From Users Where Username = @User AND Password = @Pass";
+                string query = "SELECT * FROM Users WHERE Username = @User AND Password = @Pass";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@User", txtUsername.Text);
                 cmd.Parameters.AddWithValue("@Pass", txtPassword.Text);
@@ -34,17 +29,27 @@ namespace SHRAS_WebForms
                     reader.Read();
 
                     string role = reader["Role"].ToString();
-                    string name = reader["Username"].ToString();
-                    Session["Role"] = role;
-                    Session["Username"] = name;
+                    string username = reader["Username"].ToString();
 
-                    if (role == "Admin")
+                    Session["Role"] = role;
+                    Session["Username"] = username;
+
+                    if (role == "Doctor")
+                    {
+                        int doctorId = GetDoctorIdByUsernameOrEmail(username);
+
+                        if (doctorId == 0)
+                        {
+                            lblMessage.Text = "Doctor record not found in Doctors table. Please check the database.";
+                            return;
+                        }
+
+                        Session["DoctorID"] = doctorId;
+                        Response.Redirect("~/Doctor/DoctorDashboard.aspx");
+                    }
+                    else if (role == "Admin")
                     {
                         Response.Redirect("~/Admin/AdminDashboard.aspx");
-                    }
-                    else if (role == "Doctor")
-                    {
-                        Response.Redirect("~/Doctor/DoctorDashboard.aspx");
                     }
                     else if (role == "Patient")
                     {
@@ -56,21 +61,37 @@ namespace SHRAS_WebForms
                     }
 
                     reader.Close();
-                    con.Close();
                 }
                 else
                 {
                     lblMessage.Text = "Invalid username or password.";
                 }
 
-            
+                con.Close();
             }
-
         }
+
         protected void btnRegister_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Patient/RegisterPatient.aspx");
         }
 
+        /// <summary>
+        /// Fetches DoctorID from Doctors table by matching Username with Email or FullName.
+        /// </summary>
+        private int GetDoctorIdByUsernameOrEmail(string username)
+        {
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                string query = "SELECT DoctorID FROM Doctors WHERE Email = @Username OR FullName = @Username";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@Username", username);
+                con.Open();
+
+                object result = cmd.ExecuteScalar();
+
+                return result != null ? Convert.ToInt32(result) : 0;
+            }
+        }
     }
 }

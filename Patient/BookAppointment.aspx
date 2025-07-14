@@ -1,29 +1,7 @@
 ﻿<%@ Page Title="Book Appointment" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BookAppointment.aspx.cs" Inherits="SHRAS_WebForms.Patient.BookAppointment" %>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
-        .form-container {
-            max-width: 500px;
-            margin: 40px auto;
-            padding: 30px;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            width: 100%;
-        }
-    </style>
+    <link href="../Content/PatientPages.css" rel="stylesheet" />
 
     <div class="form-container">
         <h2>Book an Appointment</h2>

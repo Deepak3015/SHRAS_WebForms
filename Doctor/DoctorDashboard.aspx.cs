@@ -19,7 +19,13 @@ namespace SHRAS_WebForms.Doctor
 
         private void LoadAppointments()
         {
-            string doctorEmail = Session["Username"]?.ToString(); // doctor email from login
+            if (Session["Role"] == null || Session["Role"].ToString() != "Doctor")
+            {
+                Response.Redirect("~/Login.aspx");
+                return;
+            }
+
+            int doctorId = Convert.ToInt32(Session["DoctorID"]);
 
             using (SqlConnection con = new SqlConnection(cs))
             {
@@ -32,11 +38,10 @@ namespace SHRAS_WebForms.Doctor
                         A.Status
                     FROM Appointments A
                     INNER JOIN Patients P ON A.PatientID = P.PatientID
-                    INNER JOIN Doctors D ON A.DoctorID = D.DoctorID
-                    WHERE D.Email = @DoctorEmail";
+                    WHERE A.DoctorID = @DoctorID";
 
                 SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@DoctorEmail", doctorEmail);
+                cmd.Parameters.AddWithValue("@DoctorID", doctorId);
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();

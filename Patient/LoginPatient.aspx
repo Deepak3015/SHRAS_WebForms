@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LoginPatient.aspx.cs" Inherits="SHRAS_WebForms.Patient.LoginPatient" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <link href="../Content/PatientPages.css" rel="stylesheet" />
+
      <div class="container mt-5">
         <h2>Patient Login</h2>
         <div class="form-group">

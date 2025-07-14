@@ -1,0 +1,150 @@
+﻿/* Patient Pages Global */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0f4f8; /* Light blue-gray, medical-friendly */
+    margin: 0;
+    padding: 0;
+}
+
+h2, h4 {
+    text-align: center;
+    color: #2c3e50; /* Dark slate, professional tone */
+}
+
+/* Form Container with High Specificity */
+.MainContent .form-container, .MainContent .container {
+    max-width: 550px !important;
+    margin: 50px auto !important;
+    padding: 30px !important;
+    background: #e6f0fa !important; /* Medical blue to blend with body */
+    border-radius: 10px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06) !important;
+    /* Debug: If this is white, an override or path issue exists */
+}
+
+.form-container, .container { /* Fallback */
+    background: #e6f0fa !important;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #34495e; /* Darker blue-gray */
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="time"],
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background: #ffffff; /* White inputs */
+}
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="date"]:focus,
+    input[type="time"]:focus,
+    select:focus {
+        border-color: #1abc9c; /* Teal focus */
+        outline: none;
+    }
+
+/* Buttons */
+.btn, .btn-primary {
+    background-color: #1abc9c; /* Teal, health trust */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+    .btn:hover, .btn-primary:hover {
+        background-color: #16a085; /* Darker teal */
+    }
+
+/* GridView Styling */
+.table, .table-bordered {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #ffffff; /* White table */
+}
+
+    .table th, .table td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    .table th {
+        background-color: #1abc9c; /* Teal header */
+        color: white;
+    }
+
+/* Welcome Message */
+#welcome, .lblPatientName {
+    font-size: 18px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* Links */
+a.btn-primary {
+    text-decoration: none;
+    color: white;
+    background: #3498db; /* Light blue */
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+    a.btn-primary:hover {
+        background: #2980b9; /* Darker blue */
+    }
+
+/* Messages */
+.text-success {
+    color: #27ae60; /* Green success */
+}
+
+.text-error, .lblMessage {
+    color: #e74c3c; /* Red errors */
+    margin-top: 10px;
+}
+
+/* Validation */
+asp\:RequiredFieldValidator,
+asp\:RegularExpressionValidator {
+    color: #e74c3c; /* Red validation */
+    display: block;
+    margin-top: 5px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .form-container, .container {
+        padding: 20px;
+    }
+
+    .btn, .btn-primary {
+        padding: 10px;
+    }
+}

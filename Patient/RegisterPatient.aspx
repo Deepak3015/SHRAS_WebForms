@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegisterPatient.aspx.cs" Inherits="SHRAS_WebForms.Patient.RegisterPatient" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <link href="../Content/PatientPages.css" rel="stylesheet" />
+
     <h2>Patient Registration</h2>
 
 <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>

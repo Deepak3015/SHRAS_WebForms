@@ -1,0 +1,52 @@
+﻿.patient-container {
+    width: 90%;
+    margin: 30px auto;
+    background: #fff;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-radius: 12px;
+}
+
+.page-title {
+    text-align: center;
+    color: #2980b9;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.gridview {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+    .gridview th, .gridview td {
+        padding: 12px 15px;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    .gridview th {
+        background-color: #3498db;
+        color: white;
+        font-weight: bold;
+    }
+
+.delete-button {
+    background: #e74c3c;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+    .delete-button:hover {
+        background: #c0392b;
+    }

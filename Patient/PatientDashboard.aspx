@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PatientDashboard.aspx.cs" Inherits="SHRAS_WebForms.Patient.Patient" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <link href="../Content/PatientPages.css" rel="stylesheet" />
+
     <div class="container mt-5">
         <h2>Welcome, <asp:Label ID="lblPatientName" runat="server" /></h2>
         

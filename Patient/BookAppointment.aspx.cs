@@ -11,6 +11,11 @@ namespace SHRAS_WebForms.Patient
         {
             if (!IsPostBack)
             {
+                if (Session["PatientEmail"] == null)
+                {
+                    Response.Redirect("LoginPatient.aspx");
+                    return;
+                }
                 BindDoctorDropdown();
             }
         }
@@ -43,13 +48,18 @@ namespace SHRAS_WebForms.Patient
             }
 
             string cs = ConfigurationManager.ConnectionStrings["dbcs"].ConnectionString;
+            string email = Session["PatientEmail"].ToString();
+            int patientId = GetPatientIdByEmail(email);
+
+            if (patientId == 0)
+            {
+                lblMessage.Text = "Patient not found!";
+                return;
+            }
 
             using (SqlConnection con = new SqlConnection(cs))
             {
                 SqlCommand cmd = new SqlCommand("INSERT INTO Appointments (PatientID, DoctorID, AppointmentDate, AppointmentTime, Status) VALUES (@PatientID, @DoctorID, @Date, @Time, @Status)", con);
-
-                // For now, hardcoding PatientID for testing (Replace with logged-in session later)
-                int patientId = 1; // Replace this with actual session-based PatientID
 
                 cmd.Parameters.AddWithValue("@PatientID", patientId);
                 cmd.Parameters.AddWithValue("@DoctorID", ddlDoctors.SelectedValue);
@@ -60,9 +70,32 @@ namespace SHRAS_WebForms.Patient
                 con.Open();
                 cmd.ExecuteNonQuery();
 
+                lblMessage.ForeColor = System.Drawing.Color.Green;
                 lblMessage.Text = "Appointment booked successfully!";
                 ClearFields();
             }
+        }
+
+        private int GetPatientIdByEmail(string email)
+        {
+            int patientId = 0;
+            string cs = ConfigurationManager.ConnectionStrings["dbcs"].ConnectionString;
+
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                string query = "SELECT PatientID FROM Patients WHERE Email = @Email";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@Email", email);
+
+                con.Open();
+                object result = cmd.ExecuteScalar();
+                if (result != null)
+                {
+                    patientId = Convert.ToInt32(result);
+                }
+            }
+
+            return patientId;
         }
 
         private void ClearFields()

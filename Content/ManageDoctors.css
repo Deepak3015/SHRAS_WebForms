@@ -1,94 +1,82 @@
-﻿.page-title {
-    text-align: center;
-    color: #2980b9;
-    margin-bottom: 20px;
-    font-weight: 600;
-    font-size: 28px;
+﻿.doctor-management-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* Allows responsiveness */
 }
 
-.subtitle {
-    text-align: center;
-    color: #7f8c8d;
-    margin-bottom: 30px;
-    font-size: 15px;
-}
-
-.grid-container {
-    margin: 0 auto;
-    width: 90%;
+.doctor-list, .doctor-form {
     background: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    border-radius: 8px;
-    padding: 20px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-radius: 12px;
+    width: 48%; /* Side by side layout */
+    min-width: 300px; /* For responsiveness */
 }
 
 .doctor-form {
-    margin: 30px auto;
-    width: 60%;
-    background: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    border-radius: 8px;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
-    .doctor-form input[type=text] {
-        width: 100%;
-        padding: 10px 12px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 14px;
-        transition: all 0.3s ease;
-    }
-
-        .doctor-form input[type=text]:focus {
-            border-color: #2980b9;
-            outline: none;
-            box-shadow: 0 0 5px rgba(41, 128, 185, 0.3);
-        }
-
-    .doctor-form .btn {
-        padding: 10px 20px;
-        background: #27ae60;
-        color: #fff;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: background 0.3s ease;
-    }
-
-        .doctor-form .btn:hover {
-            background: #1e8449;
-        }
-
-.gridview th {
-    background-color: #3498db !important;
-    color: #fff !important;
-    text-align: center;
+.input-box {
+    width: 100%;
     padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
 }
 
-.gridview td {
-    text-align: center;
-    padding: 10px;
+.gridview {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.gridview .delete-button {
-    background-color: #e74c3c;
+    .gridview th, .gridview td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    .gridview th {
+        background-color: #3498db;
+        color: white;
+    }
+
+.delete-button {
+    background: #e74c3c;
     color: #fff;
-    padding: 5px 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
 }
 
-    .gridview .delete-button:hover {
-        background-color: #c0392b;
+    .delete-button:hover {
+        background: #c0392b;
+    }
+
+.btn {
+    background: #27ae60;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+    .btn:hover {
+        background: #219150;
     }
 
 .message {
+    display: block;
+    margin-top: 15px;
     text-align: center;
-    margin-top: 10px;
-    font-weight: 500;
     color: #e74c3c;
+    font-weight: bold;
 }
