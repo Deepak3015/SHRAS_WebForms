@@ -1,21 +1,220 @@
-﻿/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    margin-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
+﻿/* Base Reset */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background: #f8fafc;
+    color: #333;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input,
-select,
-textarea {
-    max-width: 280px;
+/* Header */
+.site-header {
+    background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+    padding: 12px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-    .body-content {
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+    .main-nav ul li {
+        margin-left: 20px;
+    }
+
+        .main-nav ul li a {
+            color: #e0f2fe;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+            .main-nav ul li a:hover {
+                color: #93c5fd;
+            }
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 40px 20px;
+    background: #fff;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+/* Footer */
+.site-footer {
+    background: #1e3a8a;
+    color: #e0f2fe;
+    padding: 40px 20px 20px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+}
+
+    .footer-section h4 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #93c5fd;
+    }
+
+    .footer-section p, .footer-section ul {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .footer-section ul {
+        list-style: none;
         padding: 0;
+    }
+
+        .footer-section ul li a {
+            color: #e0f2fe;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+            .footer-section ul li a:hover {
+                color: #93c5fd;
+            }
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    text-align: center;
+    font-size: 0.85rem;
+    margin-top: 20px;
+}
+
+/* Global Forms */
+input, select, textarea {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    padding: 10px 12px;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+    input[type="submit"], .btn {
+        background: #10b981;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 0.3s ease;
+    }
+
+        input[type="submit"]:hover, .btn:hover {
+            background: #059669;
+        }
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.site-header, .main-content, .site-footer {
+    animation: fadeIn 0.8s ease;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-nav ul {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+    }
+
+        .main-nav ul.active {
+            display: flex;
+        }
+
+        .main-nav ul li {
+            margin: 10px 0;
+        }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-section {
+        margin-bottom: 30px;
     }
 }

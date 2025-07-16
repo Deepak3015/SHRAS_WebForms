@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegisterPatient.aspx.cs" Inherits="SHRAS_WebForms.Patient.RegisterPatient" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <link href="../Content/PatientPages.css" rel="stylesheet" />
+    <link href="../Content/RegisterPatient.css" rel="stylesheet" />
 
     <h2>Patient Registration</h2>
 

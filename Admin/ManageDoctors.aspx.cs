@@ -1,75 +1,121 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Web.Security;
 
 namespace SHRAS_WebForms.Admin
 {
     public partial class ManageDoctors : System.Web.UI.Page
     {
-        string cs = ConfigurationManager.ConnectionStrings["dbcs"].ConnectionString;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                BindGrid();
+                BindDoctorGrid();
             }
         }
 
-        private void BindGrid()
+        private void BindDoctorGrid()
         {
-            using (SqlConnection con = new SqlConnection(cs))
-            {
-                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Doctors", con);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                GridViewDoctors.DataSource = dt;
-                GridViewDoctors.DataBind();
-            }
+            string conStr = ConfigurationManager.ConnectionStrings["dbcs"].ConnectionString;
+            SqlConnection con = new SqlConnection(conStr);
+
+            string query = "SELECT DoctorID, FullName, Specialization, Email, Phone, Username FROM Doctors";
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            GridViewDoctors.DataSource = cmd.ExecuteReader();
+            GridViewDoctors.DataBind();
+            con.Close();
         }
 
         protected void btnAddDoctor_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(cs))
+            string fullName = txtName.Text.Trim();
+            string specialty = txtSpecialty.Text.Trim();
+            string email = txtEmail.Text.Trim();
+            string phone = txtPhone.Text.Trim();
+
+            // Generate username and password
+            string firstName = fullName.Split(' ')[0];
+            Random rnd = new Random();
+            string username = "dr." + firstName.ToLower() + rnd.Next(100, 999);
+            string tempPassword = Guid.NewGuid().ToString().Substring(0, 8);
+
+#pragma warning disable CS0618
+            string hashedPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(tempPassword, "SHA1");
+#pragma warning restore CS0618
+
+            string conStr = ConfigurationManager.ConnectionStrings["dbcs"].ConnectionString;
+
+            using (SqlConnection con = new SqlConnection(conStr))
             {
-                string query = "INSERT INTO Doctors (FullName, Specialization, Email, Phone) VALUES (@Name, @Specialty, @Email, @Phone)";
-                SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@Name", txtName.Text.Trim());
-                cmd.Parameters.AddWithValue("@Specialty", txtSpecialty.Text.Trim());
-                cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
-                cmd.Parameters.AddWithValue("@Phone", txtPhone.Text.Trim());
-
                 con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
+                SqlTransaction transaction = con.BeginTransaction();
 
-                lblMessage.Text = "Doctor Added Successfully!";
-                BindGrid();
+                try
+                {
+                    // 1️⃣ Insert into Doctors table
+                    string doctorQuery = "INSERT INTO Doctors (FullName, Specialization, Email, Phone, Username, Password) " +
+                                         "VALUES (@FullName, @Specialization, @Email, @Phone, @Username, @Password)";
+
+                    SqlCommand cmdDoctor = new SqlCommand(doctorQuery, con, transaction);
+                    cmdDoctor.Parameters.AddWithValue("@FullName", fullName);
+                    cmdDoctor.Parameters.AddWithValue("@Specialization", specialty);
+                    cmdDoctor.Parameters.AddWithValue("@Email", email);
+                    cmdDoctor.Parameters.AddWithValue("@Phone", phone);
+                    cmdDoctor.Parameters.AddWithValue("@Username", username);
+                    cmdDoctor.Parameters.AddWithValue("@Password", hashedPassword);
+
+                    cmdDoctor.ExecuteNonQuery();
+
+                    // 2️⃣ Insert into Users table
+                    string userQuery = "INSERT INTO Users (Username, Password, Role) VALUES (@Username, @Password, @Role)";
+                    SqlCommand cmdUser = new SqlCommand(userQuery, con, transaction);
+                    cmdUser.Parameters.AddWithValue("@Username", username);
+                    cmdUser.Parameters.AddWithValue("@Password", tempPassword); // Store plain password here if needed (for first time). Otherwise hash here too.
+                    cmdUser.Parameters.AddWithValue("@Role", "Doctor");
+
+                    cmdUser.ExecuteNonQuery();
+
+                    transaction.Commit();
+
+                    lblCredentials.Text = "Doctor Created! <br/> Username: <b>" + username + "</b> <br/> Password: <b>" + tempPassword + "</b>";
+                    lblMessage.Text = "";
+
+                    // Refresh GridView
+                    BindDoctorGrid();
+
+                    // Clear fields
+                    txtName.Text = "";
+                    txtSpecialty.Text = "";
+                    txtEmail.Text = "";
+                    txtPhone.Text = "";
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    lblMessage.Text = "Error: " + ex.Message;
+                }
             }
         }
 
-        protected void GridViewDoctors_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            int id = Convert.ToInt32(GridViewDoctors.DataKeys[e.RowIndex].Value);
 
-            using (SqlConnection con = new SqlConnection(cs))
+        protected void GridViewDoctors_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
+        {
+            int doctorId = Convert.ToInt32(GridViewDoctors.DataKeys[e.RowIndex].Value);
+
+            string conStr = ConfigurationManager.ConnectionStrings["dbcs"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(conStr))
             {
-                SqlCommand cmd = new SqlCommand("DELETE FROM Doctors WHERE DoctorID = @id", con);
-                cmd.Parameters.AddWithValue("@id", id);
+                string query = "DELETE FROM Doctors WHERE DoctorID=@DoctorID";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@DoctorID", doctorId);
 
                 con.Open();
                 cmd.ExecuteNonQuery();
-                con.Close();
-
-                lblMessage.Text = "Doctor Deleted Successfully!";
-                BindGrid();
             }
+
+            BindDoctorGrid();
         }
     }
 }

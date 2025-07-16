@@ -5,69 +5,11 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - SHRAS</title>
+    <title><%: Page.Title %> - SHRAS Health Management System</title>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="~/Content/Site.css" rel="stylesheet" />
-
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background: #f6f7fb;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        .navbar-custom {
-            background: linear-gradient(90deg, #2c3e50, #4ca1af);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: #fff !important;
-            animation: fadeIn 1s ease;
-        }
-
-        .nav-link {
-            color: #f0f0f0 !important;
-            margin-right: 15px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .nav-link:hover {
-            color: #ffd166 !important;
-            transform: translateY(-2px);
-        }
-
-        .body-content {
-            flex: 1;
-            padding: 30px 15px;
-        }
-
-        footer {
-            padding: 20px 0;
-            background: #2c3e50;
-            color: #ddd;
-            text-align: center;
-            font-size: 0.9rem;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
-        }
-
-        @keyframes fadeIn {
-            from {opacity:0;}
-            to {opacity:1;}
-        }
-    </style>
+    <link href="<%= ResolveUrl("~/Content/site.css") %>" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="<%= ResolveUrl("~/Content/HospitalLogo.ico") %>" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
     <form runat="server">
@@ -79,33 +21,57 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-custom">
-            <div class="container">
-                <a class="navbar-brand" runat="server" href="~/">SHRAS</a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <header class="site-header">
+            <div class="header-content">
+                <a href="~" class="brand">
+                    <img src="<%= ResolveUrl("~/Content/HospitalLogo.ico") %>" alt="SHRAS Logo" class="logo" />
+                    SHRAS Health
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="~/">Home</a></li>
+                        <li><a href="~/About">About</a></li>
+                        <li><a href="~/Contact">Contact</a></li>
+                        <li><a href="~/Services">Services</a></li>
+                    </ul>
+                    <button class="nav-toggle">☰</button>
+                </nav>
+            </div>
+        </header>
 
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-end">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About">About</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contact</a></li>
+        <main class="main-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h4>About SHRAS</h4>
+                    <p>SHRAS Health Management System is dedicated to providing top-quality healthcare services with compassion and care.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="~/">Home</a></li>
+                        <li><a href="~/About">About</a></li>
+                        <li><a href="~/Contact">Contact</a></li>
+                        <li><a href="~/Services">Services</a></li>
                     </ul>
                 </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p>Email: info@shrashealth.com</p>
+                    <p>Phone: (123) 456-7890</p>
+                    <p>Address: 123 Health St, Wellness City</p>
+                </div>
             </div>
-        </nav>
-
-        <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-        </div>
-
-        <footer>
-            &copy; <%: DateTime.Now.Year %> - SHRAS Health Management System
+            <div class="footer-bottom">
+                <p>© <%: DateTime.Now.Year %> SHRAS Health Management System. All rights reserved.</p>
+            </div>
         </footer>
 
         <asp:PlaceHolder runat="server">
-            <%: Scripts.Render("~/Scripts/bootstrap.js") %>
+            <%: Scripts.Render("~/Scripts/jquery.js") %>a
         </asp:PlaceHolder>
     </form>
 </body>
