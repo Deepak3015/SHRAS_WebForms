@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Book Appointment" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BookAppointment.aspx.cs" Inherits="SHRAS_WebForms.Patient.BookAppointment" %>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
-    <link href="../Content/PatientPages.css" rel="stylesheet" />
+    <link href="../Content/BookAppointment.css" rel="stylesheet" />
 
     <div class="form-container">
         <h2>Book an Appointment</h2>

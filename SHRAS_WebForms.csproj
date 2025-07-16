@@ -110,6 +110,7 @@
     </Content>
     <Content Include="Contact.aspx" />
     <Content Include="Content\AdminDashboard.css" />
+    <Content Include="Content\BookAppointment.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -131,9 +132,10 @@
     <Content Include="Content\Hospitallogo.ico" />
     <Content Include="Content\login.css" />
     <Content Include="Content\AdminAppointments.css" />
+    <Content Include="Content\LoginPatient.css" />
     <Content Include="Content\ManageDoctors.css" />
     <Content Include="Content\ManagePatients.css" />
-    <Content Include="Content\PatientPages.css" />
+    <Content Include="Content\PatientDashboard.css" />
     <Content Include="Content\RegisterPatient.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
