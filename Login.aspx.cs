@@ -10,7 +10,7 @@ namespace SHRAS_WebForms
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // No code needed for Page_Load in this case.
+            
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -76,9 +76,7 @@ namespace SHRAS_WebForms
             Response.Redirect("~/Patient/LoginPatient.aspx");
         }
 
-        /// <summary>
-        /// Fetches DoctorID from Doctors table by matching Username with Email or FullName.
-        /// </summary>
+
         private int GetDoctorIdByUsernameOrEmail(string username)
         {
             using (SqlConnection con = new SqlConnection(cs))
