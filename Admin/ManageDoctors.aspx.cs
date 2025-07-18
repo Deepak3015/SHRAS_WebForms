@@ -35,7 +35,7 @@ namespace SHRAS_WebForms.Admin
             string email = txtEmail.Text.Trim();
             string phone = txtPhone.Text.Trim();
 
-            // Generate username and password
+            
             string firstName = fullName.Split(' ')[0];
             Random rnd = new Random();
             string username = "dr." + firstName.ToLower() + rnd.Next(100, 999);
@@ -54,7 +54,7 @@ namespace SHRAS_WebForms.Admin
 
                 try
                 {
-                    // 1️⃣ Insert into Doctors table
+                    
                     string doctorQuery = "INSERT INTO Doctors (FullName, Specialization, Email, Phone, Username, Password) " +
                                          "VALUES (@FullName, @Specialization, @Email, @Phone, @Username, @Password)";
 
@@ -68,11 +68,11 @@ namespace SHRAS_WebForms.Admin
 
                     cmdDoctor.ExecuteNonQuery();
 
-                    // 2️⃣ Insert into Users table
+                    
                     string userQuery = "INSERT INTO Users (Username, Password, Role) VALUES (@Username, @Password, @Role)";
                     SqlCommand cmdUser = new SqlCommand(userQuery, con, transaction);
                     cmdUser.Parameters.AddWithValue("@Username", username);
-                    cmdUser.Parameters.AddWithValue("@Password", tempPassword); // Store plain password here if needed (for first time). Otherwise hash here too.
+                    cmdUser.Parameters.AddWithValue("@Password", tempPassword); 
                     cmdUser.Parameters.AddWithValue("@Role", "Doctor");
 
                     cmdUser.ExecuteNonQuery();
@@ -82,10 +82,10 @@ namespace SHRAS_WebForms.Admin
                     lblCredentials.Text = "Doctor Created! <br/> Username: <b>" + username + "</b> <br/> Password: <b>" + tempPassword + "</b>";
                     lblMessage.Text = "";
 
-                    // Refresh GridView
+
                     BindDoctorGrid();
 
-                    // Clear fields
+                    
                     txtName.Text = "";
                     txtSpecialty.Text = "";
                     txtEmail.Text = "";
