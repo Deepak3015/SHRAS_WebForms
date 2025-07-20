@@ -145,6 +145,7 @@
     <Content Include="index.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Patient\BookAppointment.aspx" />
+    <Content Include="Patient\HtmlPage1.html" />
     <Content Include="Patient\LoginPatient.aspx" />
     <Content Include="Patient\PatientDashboard.aspx" />
     <Content Include="Patient\RegisterPatient.aspx" />
