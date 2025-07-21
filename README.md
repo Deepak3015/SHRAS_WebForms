@@ -115,11 +115,35 @@ Press **F5** or click **Start** in Visual Studio.
 
 ## 🖼️ **Screenshots**
 
-> *You can replace these placeholders with real screenshots.*
+### 🧑‍⚕️ **Patient Registration**
 
-| Patient Registration | Doctor Dashboard |
-|---------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| <img width="1823" height="911" alt="image" src="https://github.com/user-attachments/assets/c5767772-58db-4082-95ac-a9f4687aff27" />| <img width="1850" height="901" alt="image" src="https://github.com/user-attachments/assets/14e58c7b-fb26-41c5-9193-b2d2b708b767" />|
+<p align="center">
+  <img width="900" src="https://github.com/user-attachments/assets/c5767772-58db-4082-95ac-a9f4687aff27" alt="Patient Registration" />
+</p>
+
+---
+
+### 🩺 **Doctor Dashboard**
+
+<p align="center">
+  <img width="900" src="https://github.com/user-attachments/assets/14e58c7b-fb26-41c5-9193-b2d2b708b767" alt="Doctor Dashboard" />
+</p>
+
+---
+
+### 🛠️ **Admin Dashboard**
+
+<p align="center">
+  <img width="900" src="https://github.com/user-attachments/assets/cdc8f6a2-30a1-4f19-aca0-8a626b43eb06" alt="Admin Dashboard" />
+</p>
+
+---
+
+### 👨‍⚕️ **Manage Doctor**
+
+<p align="center">
+  <img width="900" src="https://github.com/user-attachments/assets/1e4a2301-715c-4e5b-b199-53d46f408884" alt="Manage Doctor" />
+</p>
 
 ---
 
