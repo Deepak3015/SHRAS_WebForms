@@ -1,22 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace SHRAS_WebForms.Patient
 {
     public partial class LoginPatient : System.Web.UI.Page
     {
         string connectionString = ConfigurationManager.ConnectionStrings["dbcs"].ConnectionString;
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            
 
-        }
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -28,16 +19,23 @@ namespace SHRAS_WebForms.Patient
 
                 con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
+
                 if (reader.HasRows)
                 {
-                    
-                    Session["PatientEmail"] = txtEmail.Text;
+                    reader.Read();
+
+                    Session["PatientEmail"] = reader["Email"].ToString();
+                    Session["PatientName"] = reader["FullName"].ToString();
+                    Session["PatientID"] = reader["PatientID"].ToString();
+
                     Response.Redirect("PatientDashboard.aspx");
                 }
                 else
                 {
                     lblMessage.Text = "Invalid email or password.";
                 }
+
+                reader.Close();
             }
         }
     }

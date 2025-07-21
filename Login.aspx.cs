@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Web.Security;
 
 namespace SHRAS_WebForms
 {
     public partial class Login : System.Web.UI.Page
     {
         string cs = ConfigurationManager.ConnectionStrings["dbcs"].ConnectionString;
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            
-        }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
@@ -21,8 +17,8 @@ namespace SHRAS_WebForms
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@User", txtUsername.Text);
                 cmd.Parameters.AddWithValue("@Pass", txtPassword.Text);
-                con.Open();
 
+                con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -36,11 +32,11 @@ namespace SHRAS_WebForms
 
                     if (role == "Doctor")
                     {
-                        int doctorId = GetDoctorIdByUsernameOrEmail(username);
+                        int doctorId = GetDoctorIdByUsername(username);
 
                         if (doctorId == 0)
                         {
-                            lblMessage.Text = "Doctor record not found in Doctors table. Please check the database.";
+                            lblMessage.Text = "Doctor record not found.";
                             return;
                         }
 
@@ -71,25 +67,24 @@ namespace SHRAS_WebForms
             }
         }
 
-        protected void btnRegister_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/Patient/LoginPatient.aspx");
-        }
 
-
-        private int GetDoctorIdByUsernameOrEmail(string username)
+        private int GetDoctorIdByUsername(string username)
         {
             using (SqlConnection con = new SqlConnection(cs))
             {
-                string query = "SELECT DoctorID FROM Doctors WHERE Email = @Username OR FullName = @Username";
+                string query = "SELECT DoctorID FROM Doctors WHERE Username = @Username";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@Username", username);
                 con.Open();
 
                 object result = cmd.ExecuteScalar();
-
                 return result != null ? Convert.ToInt32(result) : 0;
             }
+        }
+
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Patient/LoginPatient.aspx");
         }
     }
 }

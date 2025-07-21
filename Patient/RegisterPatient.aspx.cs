@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Web.Security;
 
 namespace SHRAS_WebForms.Patient
 {
@@ -17,6 +13,8 @@ namespace SHRAS_WebForms.Patient
         {
             if (Page.IsValid)
             {
+
+
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
                     string query = "INSERT INTO Patients (FullName, Gender, Email, Password) VALUES (@FullName, @Gender, @Email, @Password)";
@@ -45,5 +43,4 @@ namespace SHRAS_WebForms.Patient
             }
         }
     }
-
 }
