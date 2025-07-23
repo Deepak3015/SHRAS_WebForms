@@ -53,7 +53,7 @@ namespace SHRAS_WebForms.Admin
 
                 try
                 {
-                    // Insert into Doctors
+                   
                     string doctorQuery = "INSERT INTO Doctors (FullName, Specialization, Email, Phone, Username, Password) " +
                                          "VALUES (@FullName, @Specialization, @Email, @Phone, @Username, @Password)";
 
@@ -66,7 +66,7 @@ namespace SHRAS_WebForms.Admin
                     cmdDoctor.Parameters.AddWithValue("@Password", hashedPassword);
                     cmdDoctor.ExecuteNonQuery();
 
-                    // Insert into Users (hashed password too!)
+                    
                     string userQuery = "INSERT INTO Users (Username, Password, Role) VALUES (@Username, @Password, @Role)";
                     SqlCommand cmdUser = new SqlCommand(userQuery, con, transaction);
                     cmdUser.Parameters.AddWithValue("@Username", username);
