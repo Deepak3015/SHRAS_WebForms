@@ -25,7 +25,6 @@
             <div class="btn-group">
                 <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn login" OnClick="btnLogin_Click" />
                 <asp:Button ID="btnRegister" runat="server" Text="Register as Patient" CssClass="btn register" OnClick="btnRegister_Click" />
-                <asp:Button ID="Button1" runat="server" Text="Login as Patient" CssClass="btn register" OnClick="btnRegister_Click" />
             </div>
         </div>
 

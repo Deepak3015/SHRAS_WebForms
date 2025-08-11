@@ -33,6 +33,7 @@ namespace SHRAS_WebForms.Patient
                         lblMessage.Text = "Registration successful!";
                         txtName.Text = txtEmail.Text = txtPassword.Text = "";
                         ddlGender.SelectedIndex = 0;
+                        Response.Redirect("~/Patient/LoginPatient.aspx");
                     }
                     else
                     {
@@ -42,5 +43,7 @@ namespace SHRAS_WebForms.Patient
                 }
             }
         }
+
+
     }
 }
